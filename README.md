@@ -10,7 +10,7 @@ Este proyecto implementa y analiza el protocolo de comunicación PostgreSQL Fron
 El **PostgreSQL Frontend/Backend Protocol** es un protocolo binario orientado a mensajes que opera sobre TCP/IP (puerto 5432) o sockets UNIX. Características clave:
 
 - **Estructura de mensajes**:
-  - Byte de tipo (ej: `Q`=Query, `R`=Request)
+  - Byte de tipo (ej: `Q`=Query, `R`=Autenticación)
   - Longitud (4 bytes)
   - Cuerpo con datos (consultas, parámetros)
 
@@ -27,41 +27,47 @@ El **PostgreSQL Frontend/Backend Protocol** es un protocolo binario orientado a 
 - 2 máquinas virtuales Ubuntu
 - Docker instalado en ambos sistemas
 
+Comandos de instalación:
 ```bash
-# Comandos de instalación
 sudo apt update
 sudo apt install docker.io
 sudo systemctl enable docker
 sudo systemctl start docker
+```
+
 
 Servidor PostgreSQL
 Crear contenedor:
 
-bash
+```bash
 sudo docker run --name pg-servidor \
   -e POSTGRES_USER=carlostarea2 \
   -e POSTGRES_PASSWORD=psqlclientel23 \
   -e POSTGRES_DB=tarea2_taller \
   -p 5432:5432 \
   -d postgres
+```
 Verificar conexión:
 
-bash
+```es necesario el bash?
 sudo docker ps
+```
 Abrir puerto 5432 en el firewall.
 
 Cliente PostgreSQL
 Verificar conectividad con el servidor (reemplazar IP según tu entorno):
 
-bash
+```bash
 ping 172.16.30.83
 Conectar al servidor:
+```
 
-bash
+```bash
 docker run -it --rm postgres psql \
   -h 172.16.30.83 \
   -U carlostarea2 \
   -d tarea2_taller
+```
 Ingresar contraseña cuando se solicite
 
 Análisis de Tráfico con Wireshark
@@ -117,3 +123,4 @@ Jorge Gonzalez
 
 Martín Mora
 *Universidad Diego Portales - Junio 2025*
+

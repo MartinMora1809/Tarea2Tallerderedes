@@ -10,7 +10,7 @@ Este proyecto implementa y analiza el protocolo de comunicación PostgreSQL Fron
 El **PostgreSQL Frontend/Backend Protocol** es un protocolo binario orientado a mensajes que opera sobre TCP/IP (puerto 5432) o sockets UNIX. Características clave:
 
 - **Estructura de mensajes**:
-  - Byte de tipo (ej: `Q`=Query, `R`=Autenticación)
+  - Byte de tipo (ej: `Q`=Query, `R`=Request)
   - Longitud (4 bytes)
   - Cuerpo con datos (consultas, parámetros)
 
